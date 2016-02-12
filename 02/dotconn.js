@@ -5,6 +5,8 @@ ctx.fillStyle = "#000000";
 
 var r = 10;
 
+ctx.strokeRect(0, 0, canvas.width, canvas.height);
+
 var connect = function connect(e){
     e.preventDefault();
 
