@@ -6,6 +6,7 @@ ctx.fillStyle = "#000000";
 
 var r = 10;
 var inc = true;
+var requestID;
 
 ctx.strokeRect(0, 0, canvas.width, canvas.height);
 
@@ -31,7 +32,13 @@ var draw = function draw(e){
 	r -= 1;
     }
     
-    window.requestAnimationFrame(draw);
+    requestID = window.requestAnimationFrame(draw);
 };
 
+var stop = function stop(e){
+    e.preventDefault();
+    window.cancelAnimationFrame(requestID);
+}
+
 document.getElementById("start").addEventListener("click", draw);
+document.getElementById("stop").addEventListener("click", stop);
