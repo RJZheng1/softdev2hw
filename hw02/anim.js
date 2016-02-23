@@ -10,6 +10,12 @@ var requestID;
 
 ctx.strokeRect(0, 0, canvas.width, canvas.height);
 
+var logo = new Image();
+logo.src = "logo_dvd.jpg";
+var w = 120, h = 80;
+var x = y = 200;
+var up, down = true;
+
 var draw = function draw(e){
     if(e instanceof Event){
 	e.preventDefault();
@@ -17,7 +23,6 @@ var draw = function draw(e){
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.strokeRect(0, 0, canvas.width, canvas.height);
-    
     ctx.beginPath();
     ctx.arc(canvas.width/2, canvas.height/2, r, 0, 2*Math.PI);
     ctx.fill();
@@ -35,10 +40,23 @@ var draw = function draw(e){
     requestID = window.requestAnimationFrame(draw);
 };
 
+var dvd = function dvd(e){
+    if(e instanceof Event){
+	e.preventDefault();
+    }
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.strokeRect(0, 0, canvas.width, canvas.height);
+    ctx.drawImage(logo, x, y, w, h);
+
+    requestID = window.requestAnimationFrame(dvd);
+}
+
 var stop = function stop(e){
     e.preventDefault();
     window.cancelAnimationFrame(requestID);
 }
 
 document.getElementById("start").addEventListener("click", draw);
+document.getElementById("dvd").addEventListener("click", dvd);
 document.getElementById("stop").addEventListener("click", stop);
