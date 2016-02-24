@@ -14,7 +14,7 @@ var logo = new Image();
 logo.src = "logo_dvd.jpg";
 var w = 120, h = 80;
 var x = y = 200;
-var up, down = true;
+var up, right = true;
 
 var draw = function draw(e){
     if(e instanceof Event){
@@ -49,6 +49,25 @@ var dvd = function dvd(e){
     ctx.strokeRect(0, 0, canvas.width, canvas.height);
     ctx.drawImage(logo, x, y, w, h);
 
+    if(x <= 0 || x >= canvas.width - w){
+	right = !right;
+    }
+    if(y <= 0 || y >= canvas.width - h){
+	up = !up;
+    }
+
+    if(right){
+	x += 1;
+    }else{
+	x -= 1;
+    }
+
+    if(up){
+	y += 1;
+    }else{
+	y -= 1;
+    }
+    
     requestID = window.requestAnimationFrame(dvd);
 }
 
