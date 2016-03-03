@@ -11,7 +11,7 @@ var up, right = true;
 
 var setup = function setup(){
     var c = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-    c.setAttribute("id", "circle");
+    c.setAttribute("id", "dot");
     c.setAttribute("cx", 250);
     c.setAttribute("cy", 250);
     c.setAttribute("r", r);
@@ -22,7 +22,7 @@ var setup = function setup(){
     var p = document.createElementNS("http://www.w3.org/2000/svg", "image");
     p.setAttribute("id", "pic");
     p.setAttribute("width", w);
-    p.setAtribute("height", h);
+    p.setAttribute("height", h);
     p.setAttributeNS("http://ww3.org/1999/xlink", "href", "logo_dvd.jpg");
     p.setAttribute("x", x);
     p.setAttribute("y", y);
@@ -33,9 +33,9 @@ var circle = function circle(e){
     e.preventDefault();
 
     window.clearInterval(intervalID);
-    
+
     var change = function change(e){
-	c = document.getElementById("circle");
+	c = document.getElementById("dot");
 	c.setAttribute("r", r);
 	
 	if(r <= 0 || r >= 250){
@@ -52,12 +52,12 @@ var circle = function circle(e){
     intervalID = window.setInterval(change, 16);
 };
 
-var dvdSetup = function dvdSetup(e){
+var dvd = function dvd(e){
     if(e instanceof Event){
 	e.preventDefault();
     }
 
-    window.cancelAnimationFrame(requestID);
+    window.clearInterval(intervalID);
     
     var move = function move(){
 	p = document.getElementById("pic");
@@ -82,11 +82,9 @@ var dvdSetup = function dvdSetup(e){
 	}else{
 	    y -= 1;
 	}
-	    
-	requestID = window.requestAnimationFrame(move);
     };
 
-    dvd();
+    requestID = window.setInterval(move, 16);
 };
 
 var stop = function stop(e){
