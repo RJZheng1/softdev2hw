@@ -59,7 +59,7 @@ var dvdSetup = function dvdSetup(e){
 	if(x <= 0 || x >= canvas.width - w){
 	    right = !right;
 	}
-	if(y <= 0 || y >= canvas.width - h){
+	if(y <= 0 || y >= canvas.height - h){
 	    up = !up;
 	}
 	

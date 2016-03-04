@@ -14,16 +14,16 @@ var setup = function setup(){
     c.setAttribute("id", "dot");
     c.setAttribute("cx", 250);
     c.setAttribute("cy", 250);
-    c.setAttribute("r", r);
+    c.setAttribute("r", 0);
     c.setAttribute("fill", "yellow");
     c.setAttribute("stroke", "black");
     pic.appendChild(c);
 
     var p = document.createElementNS("http://www.w3.org/2000/svg", "image");
     p.setAttribute("id", "pic");
-    p.setAttribute("width", w);
-    p.setAttribute("height", h);
-    p.setAttributeNS("http://ww3.org/1999/xlink", "href", "logo_dvd.jpg");
+    p.setAttribute("width", 0);
+    p.setAttribute("height", 0);
+    p.setAttributeNS("http://www.w3.org/1999/xlink", "href", "logo_dvd.jpg");
     p.setAttribute("x", x);
     p.setAttribute("y", y);
     pic.appendChild(p);
@@ -33,6 +33,10 @@ var circle = function circle(e){
     e.preventDefault();
 
     window.clearInterval(intervalID);
+    
+    var p = document.getElementById("pic");
+    p.setAttribute("width", 0);
+    p.setAttribute("height", 0);
 
     var change = function change(e){
 	c = document.getElementById("dot");
@@ -59,15 +63,22 @@ var dvd = function dvd(e){
 
     window.clearInterval(intervalID);
     
+    var c = document.getElementById("dot");
+    c.setAttribute("r", 0);
+    
+    var p = document.getElementById("pic");
+    p.setAttribute("width", w);
+    p.setAttribute("height", h);
+
     var move = function move(){
 	p = document.getElementById("pic");
 	p.setAttribute("x", x);
 	p.setAttribute("y", y);
 	
-	if(x <= 0 || x >= pic.width - w){
+	if(x <= 0 || x+w >= 500){
 	    right = !right;
 	}
-	if(y <= 0 || y >= pic.width - h){
+	if(y <= 0 || y+h >= 500){
 	    up = !up;
 	}
 	
