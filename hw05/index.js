@@ -52,6 +52,9 @@ var change = function(e){
 	    .transition()
 	    .style("background-color", function(d) { return d; });
 	
+	document.getElementsByTagName("h1")[0].innerHTML = "Number of Democratic Delegates Per State"
+	document.getElementsByTagName("h3")[0].innerHTML = "Total Number of Democratic Delegates: 4923"
+
 	rep = false
     }else{
 	d3.select(".chart")
@@ -73,6 +76,9 @@ var change = function(e){
 	    .transition()
 	    .style("background-color", function(d) { return d; });
 	
+	document.getElementsByTagName("h1")[0].innerHTML = "Number of Republican Delegates Per State"
+	document.getElementsByTagName("h3")[0].innerHTML = "Total Number of Republican Delegates: 2495"
+
 	rep = true
     }
 }
