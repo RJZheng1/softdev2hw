@@ -19,9 +19,8 @@ def pt2(n):
 def quickSort(nums):
     if len(nums) <= 1:
         return nums
-    pivot = nums[random.randint(0, len(nums)-1)]
+    pivot = random.choice(nums)
     smaller = [x for x in nums if x < pivot]
     larger = [x for x in nums if x > pivot]
     equal = [x for x in nums if x == pivot]
     return quickSort(smaller) + equal + quickSort(larger)
-
