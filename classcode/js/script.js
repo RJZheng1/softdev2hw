@@ -24,7 +24,8 @@ var makeIncrementer = function() {
 };
 
 var makeAddr = function(n) {
-    return function(x){
-	return x + n;
-    }
-}
+    return function(y){
+	n = n + y
+	return n;
+    };
+};
